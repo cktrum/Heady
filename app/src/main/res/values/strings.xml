@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Heady</string>
+    <string name="date_string">Day</string>
+    <string name="time_separator">-</string>
+    <string name="intensity_string">Intensity</string>
+    <string name="intensity1">weak</string>
+    <string name="intensity2">strong</string>
+    <string name="side_string">Side</string>
+    <string name="type_string">Type</string>
+    <string name="triggers_hint">Notes …</string>
+    <string name="countermeasure_string">Measure</string>
+    <string name="countermeasure_button">Add</string>
+    <string name="side_effect_string">Side Effect</string>
+</resources>

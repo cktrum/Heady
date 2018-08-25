@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <item
+        android:id="@+id/ListViewSettings"
+        android:icon="@drawable/ic_menu_black_24dp"
+        app:showAsAction="always"
+        android:title="Settings">
+
+        <menu>
+            <item
+                android:id="@+id/SettingsItem"
+                android:title="Settings"/>
+            <item
+                android:id="@+id/ExportItem"
+                android:title="Export" />
+        </menu>
+
+    </item>
+
+</menu>
