@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -42,7 +43,6 @@ public class ListItemFragment extends Fragment {
         entry = (HeadacheEntry) getArguments().getSerializable("HeadacheEntry");
         showHeadacheEntryDetails(view);
         configureEditButton(view);
-        configureLongPress(view);
 
         return view;
     }
@@ -64,8 +64,7 @@ public class ListItemFragment extends Fragment {
     }
 
     private void configureEditButton(View view) {
-        ImageButton editBtn = (ImageButton) view.findViewById(R.id.EditBtn);
-        editBtn.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent addEntryIntent = new Intent(getActivity(), NewEntryActivity.class);
@@ -73,19 +72,5 @@ public class ListItemFragment extends Fragment {
                 startActivity(addEntryIntent);
             }
         });
-    }
-
-    private void configureLongPress(View view) {
-        TableRow item = view.findViewById(R.id.EntryItemRow);
-        /*
-        item.setOnContextClickListener(new View.OnContextClickListener() {
-            @Override
-            public boolean onContextClick(View view) {
-                DBHandler db = new DBHandler(getContext());
-                db.deleteEntry(entry.getID());
-                return true;
-            }
-        });
-        */
     }
 }
