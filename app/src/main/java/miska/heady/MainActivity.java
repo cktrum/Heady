@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ExportItem:
                 exportAllEntriesToCSV();
                 return true;
+            case R.id.SettingsItem:
+                Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

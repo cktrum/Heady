@@ -11,4 +11,5 @@
     <string name="countermeasure_string">Measure</string>
     <string name="countermeasure_button">Add</string>
     <string name="side_effect_string">Side Effect</string>
+    <string name="from_date_string">Show entries after:</string>
 </resources>
