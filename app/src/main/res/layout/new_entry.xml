@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -28,8 +31,8 @@
                         android:id="@+id/DateString"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/date_string"/>
+                        android:text="@string/date_string"
+                        android:textSize="16sp" />
 
                     <EditText
                         android:id="@+id/DateTextField"
@@ -42,6 +45,7 @@
                 </TableRow>
 
                 <TableRow>
+
                     <EditText
                         android:id="@+id/StartTimeTextField"
                         android:layout_width="100dp"
@@ -52,8 +56,8 @@
                     <TextView
                         android:id="@+id/DashString"
                         android:layout_gravity="center"
-                        android:textSize="16sp"
-                        android:text="@string/time_separator" />
+                        android:text="@string/time_separator"
+                        android:textSize="16sp" />
 
                     <EditText
                         android:id="@+id/EndTimeTextField"
@@ -64,48 +68,51 @@
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/IntensityLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/intensity_string"/>
+                        android:text="@string/intensity_string"
+                        android:textSize="16sp" />
 
                     <SeekBar
                         android:id="@+id/IntensityBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_span="2"
-                        android:theme="@style/Base.Widget.AppCompat.SeekBar.Discrete"
-                        android:max="4" />
+                        android:max="4"
+                        android:theme="@style/Base.Widget.AppCompat.SeekBar.Discrete" />
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/IntensityScaleLabel1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:layout_column="1"
-                        android:text="@string/intensity1"/>
+                        android:text="@string/intensity1"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/IntensityScaleLabel2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:layout_gravity="end"
                         android:layout_column="2"
-                        android:text="@string/intensity2"/>
+                        android:layout_gravity="end"
+                        android:text="@string/intensity2"
+                        android:textSize="16sp" />
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/SideLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/side_string"/>
+                        android:text="@string/side_string"
+                        android:textSize="16sp" />
 
                     <Spinner
                         android:id="@+id/SideSpinner"
@@ -115,12 +122,13 @@
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/TypeLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/type_string" />
+                        android:text="@string/type_string"
+                        android:textSize="16sp" />
 
                     <Spinner
                         android:id="@+id/TypeSpinner"
@@ -130,6 +138,7 @@
                 </TableRow>
 
                 <TableRow>
+
                     <EditText
                         android:id="@+id/TriggersField"
                         android:layout_width="wrap_content"
@@ -141,13 +150,14 @@
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/CounterMeasureLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:layout_span="2"
-                        android:text="@string/countermeasure_string"/>
+                        android:text="@string/countermeasure_string"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/CounterMeasureAddBtn"
@@ -158,22 +168,23 @@
                 </TableRow>
 
                 <TableRow>
+
                     <TableLayout
                         android:id="@+id/CounterMeasureList"
-                        android:layout_column="1"
-                        android:layout_span="2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </TableLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_span="2"></TableLayout>
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/SideEffectLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="@string/side_effect_string"/>
+                        android:text="@string/side_effect_string"
+                        android:textSize="16sp" />
 
                     <Spinner
                         android:id="@+id/SideEffectSpinner"
@@ -188,8 +199,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Form"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:text="Save" />
         </RelativeLayout>
     </ScrollView>

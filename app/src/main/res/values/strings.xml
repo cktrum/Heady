@@ -12,4 +12,5 @@
     <string name="countermeasure_button">Add</string>
     <string name="side_effect_string">Side Effect</string>
     <string name="from_date_string">Show entries after:</string>
+    <string name="number_entries_string">Number of entries shown:</string>
 </resources>

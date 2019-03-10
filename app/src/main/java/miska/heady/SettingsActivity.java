@@ -40,9 +40,24 @@ public class SettingsActivity extends AppCompatActivity {
                 openDateDialog(fromDateField);
             }
         });
+        fillWithData();
     }
 
-    void openDateDialog(final EditText fromDateField) {
+    private void fillWithData() {
+        int numberOfEntries = sharedPreferences.getInt("numberOfEntries", 0);
+        EditText entriesTextField = findViewById(R.id.NumberEntriesTextField);
+        entriesTextField.setText(String.valueOf(numberOfEntries));
+
+        String fromDateString = sharedPreferences.getString("fromDate", null);
+        EditText fromDateTextField = findViewById(R.id.FromDateTextField);
+        if (fromDateString != null && !fromDateString.isEmpty()) {
+            fromDateTextField.setText(dateFormatter.format(fromDateString));
+        } else {
+            fromDateTextField.setText(dateFormatter.format(new Date()));
+        }
+    }
+
+    private void openDateDialog(final EditText fromDateField) {
         DatePickerDialog.OnDateSetListener dateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -82,10 +97,22 @@ public class SettingsActivity extends AppCompatActivity {
     void saveSettings() {
         EditText textField = findViewById(R.id.FromDateTextField);
         String dateString = textField.getText().toString();
+        Date fromDate = new Date();
+        try {
+            fromDate = dateFormatter.parse(dateString);
+        } catch (ParseException e) {
+            System.err.println(e.getMessage());
+        }
+
+        EditText numberField = findViewById(R.id.NumberEntriesTextField);
+        int numberOfEntries = Integer.parseInt(numberField.getText().toString());
+        Setting settings = new Setting(numberOfEntries, fromDate);
+        DBHandler db = new DBHandler(this);
+        db.saveSettings(settings);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("fromDate", dateString);
+        editor.putInt("numberOfEntries", numberOfEntries);
         editor.commit();
-
     }
 }

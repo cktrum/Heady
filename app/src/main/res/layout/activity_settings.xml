@@ -17,6 +17,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/NumberEntriesString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/number_entries_string"/>
+
+                <EditText
+                    android:id="@+id/NumberEntriesTextField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
                     android:id="@+id/FromDateString"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

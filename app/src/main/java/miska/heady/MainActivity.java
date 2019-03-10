@@ -1,6 +1,8 @@
 package miska.heady;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "MainActivity";
     ArrayList<String> fragmentTags = new ArrayList<>();
-    private static final int numberOfEntriesShown = 10;
+    private static int numberOfEntriesShown = 10;
     private static final int noLimit = -1;
 
     @Override
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         removeFragements();
+        setNumberOfEntriesToShow();
         displayHeadacheEntries();
         setupAddEntryButton();
     }
@@ -79,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.remove(fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    private void setNumberOfEntriesToShow() {
+        SharedPreferences settings = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        int numberOfEntries = settings.getInt("numberOfEntries", 0);
+        if (numberOfEntries == 0) {
+            DBHandler db = new DBHandler(this);
+            numberOfEntriesShown = db.getNumberOfEntries();
+        }
+        numberOfEntriesShown = numberOfEntries;
     }
 
     private void displayHeadacheEntries() {

@@ -29,10 +29,13 @@ public class DBHandler extends SQLiteOpenHelper {
                 "CounterMeasureID INT, FOREIGN KEY (HeadacheID) REFERENCES Headache(ID), " +
                 "FOREIGN KEY (CounterMeasureID) REFERENCES CounterMeasure(ID), " +
                 "PRIMARY KEY (HeadacheID, CounterMeasureID))";
+        String createSettingsTableCommand = "CREATE TABLE Setting (NumberEntries INTEGER, " +
+                "FromDate INTEGER, PRIMARY KEY (NumberEntries, FromDate))";
 
         db.execSQL(createHeadacheTableCommand);
         db.execSQL(createCounterMeasureTableCommand);
         db.execSQL(createMappingTableCommand);
+        db.execSQL(createSettingsTableCommand);
     }
 
     @Override
@@ -40,6 +43,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Headache");
         db.execSQL("DROP TABLE IF EXISTS CounterMeasure");
         db.execSQL("DROP TABLE IF EXISTS Mapping");
+        db.execSQL("DROP TABLE IF EXISTS Setting");
         onCreate(db);
     }
 
@@ -72,6 +76,29 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
         db.close();
+    }
+
+    public void saveSettings(Setting settings) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues settingValues = new ContentValues();
+        settingValues.put("NumberEntries", settings.getNumberOfEntries());
+        settingValues.put("FromDate", settings.getFromDate());
+
+        db.insertWithOnConflict("Setting", null, settingValues,
+                SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+    }
+
+    public int getNumberOfEntries() {
+        int result = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("Setting", new String[] {"NumberEntries", "FromDate"},
+                null,null, null, null, null);
+        if (cursor.moveToFirst()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
     }
 
     private ArrayList<CounterMeasure> retrieveCounterMeasures(int headacheID) {
