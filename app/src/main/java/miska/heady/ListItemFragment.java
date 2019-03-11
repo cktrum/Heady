@@ -57,6 +57,14 @@ public class ListItemFragment extends Fragment {
         SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm", Locale.UK);
         startTimeView.setText(timeFormatter.format(startDate));
 
+        TextView endTimeView = (TextView) view.findViewById(R.id.EndTimeView);
+        TextView dashView = (TextView) view.findViewById(R.id.DashView);
+        if (entry.hasEndTime()) {
+            Date endDate = new Date(entry.getEndTime());
+            endTimeView.setText(timeFormatter.format(endDate));
+            dashView.setText("-");
+        }
+
         TextView intensityView = (TextView) view.findViewById(R.id.IntensityView);
         String label = "+";
         String intensity = new String(new char[entry.getIntensity()]).replace("\0", label);
