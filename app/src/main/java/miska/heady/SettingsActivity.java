@@ -50,11 +50,18 @@ public class SettingsActivity extends AppCompatActivity {
 
         String fromDateString = sharedPreferences.getString("fromDate", null);
         EditText fromDateTextField = findViewById(R.id.FromDateTextField);
-        if (fromDateString != null && !fromDateString.isEmpty()) {
-            fromDateTextField.setText(dateFormatter.format(fromDateString));
-        } else {
+        Date fromDate = null;
+        try {
+            if (fromDateString != null && !fromDateString.isEmpty()) {
+                fromDate = dateFormatter.parse(fromDateString);
+                fromDateTextField.setText(fromDateString);
+            } else {
+                fromDateTextField.setText(dateFormatter.format(new Date()));
+            }
+        } catch (ParseException e) {
             fromDateTextField.setText(dateFormatter.format(new Date()));
         }
+
     }
 
     private void openDateDialog(final EditText fromDateField) {
