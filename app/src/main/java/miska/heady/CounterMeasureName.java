@@ -5,7 +5,7 @@ public enum CounterMeasureName {
     FOOD("Food"),
     SLEEP("Sleep"),
     EXERCISE("Exercise"),
-    IBUPROFEN("Ibuprofen");
+    PAINKILLER("Painkiller");
 
     private String verboseName;
 
@@ -24,7 +24,7 @@ public enum CounterMeasureName {
             case "food": return 1;
             case "sleep": return 2;
             case "exercise": return 3;
-            case "ibuprofen": return 4;
+            case "painkiller": return 4;
             default: return 0;
         }
     }
@@ -35,7 +35,7 @@ public enum CounterMeasureName {
             case "food": return FOOD;
             case "sleep": return SLEEP;
             case "exercise": return EXERCISE;
-            case "ibuprofen": return IBUPROFEN;
+            case "painkiller": return PAINKILLER;
             default: return COFFEE;
         }
     }
