@@ -21,7 +21,8 @@
         <activity android:name=".NewEntryActivity">
         </activity>
         <activity android:name=".SettingsActivity">
-
+        </activity>
+        <activity android:name=".GraphActivity">
         </activity>
 
     </application>

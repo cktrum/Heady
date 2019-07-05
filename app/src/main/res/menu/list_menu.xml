@@ -15,6 +15,9 @@
                 android:id="@+id/SettingsItem"
                 android:title="Settings"/>
             <item
+                android:id="@+id/GraphsItem"
+                android:title="Graphs"/>
+            <item
                 android:id="@+id/ExportItem"
                 android:title="Export" />
         </menu>

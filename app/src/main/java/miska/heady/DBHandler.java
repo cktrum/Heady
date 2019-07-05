@@ -174,6 +174,29 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public ArrayList<DaysPerMonthEntry> getDaysPerMonthStatistic() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<DaysPerMonthEntry> result = new ArrayList<DaysPerMonthEntry>();
+
+        String selectClause = "strftime('%Y-%m', datetime(StartDate/1000, 'unixepoch'))";
+        String groupByClause = "strftime('%Y-%m', datetime(StartDate/1000, 'unixepoch'))";
+        String orderByClause = "strftime('%Y-%m', datetime(StartDate/1000, 'unixepoch'))";
+        Cursor cursor = db.query("Headache", new String[] {"COUNT(*) AS amount, " + selectClause + " AS date"},
+                null, null, groupByClause, null, orderByClause);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int amount = cursor.getInt(cursor.getColumnIndex("amount"));
+                String dateString = cursor.getString(cursor.getColumnIndex("date"));
+                result.add(new DaysPerMonthEntry(amount, dateString));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return result;
+    }
+
     private ContentValues fillValues(HeadacheEntry entry) {
         ContentValues headacheValues = new ContentValues();
 

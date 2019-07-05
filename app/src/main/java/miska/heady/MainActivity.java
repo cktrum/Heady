@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.GraphsItem:
+                Intent graphIntent = new Intent(getBaseContext(), GraphActivity.class);
+                startActivity(graphIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
